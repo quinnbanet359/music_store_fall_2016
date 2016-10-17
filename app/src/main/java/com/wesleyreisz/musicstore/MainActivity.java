@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.wesleyreisz.musicstore.account.AccountFragment;
+import com.wesleyreisz.musicstore.home.HomeFragment;
 import com.wesleyreisz.musicstore.itune.ItuneFragment;
 import com.wesleyreisz.musicstore.mysong.MySongFragment;
 import com.wesleyreisz.musicstore.navigation.NavigationFragment;
@@ -40,10 +41,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadFragment(Fragment fragment2load) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragmentMain, fragment2load)
-                .commit();
+        if(findViewById(R.id.fragmentContent)!=null){
+            //show this when in in landscape
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentMain, fragment2load)
+                    .replace(R.id.fragmentContent, new HomeFragment())
+                    .commit();
+
+        }else {
+            //show this when in in portrait
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentMain, fragment2load)
+                    .commit();
+        }
     }
 
     @Override

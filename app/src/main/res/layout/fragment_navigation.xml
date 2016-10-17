@@ -13,7 +13,7 @@
     tools:showIn="@layout/activity_main">
     <TextView
         android:padding="20dp"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:text="Navigation"
         android:gravity="center"
         android:layout_width="match_parent"
