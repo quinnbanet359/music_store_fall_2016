@@ -72,10 +72,20 @@ public class NavigationFragment extends Fragment {
     }
 
     private void loadFragment(Fragment fragment2load) {
-        getActivity()
-            .getSupportFragmentManager()
-            .beginTransaction()
-            .replace(R.id.fragmentMain, fragment2load)
-            .commit();
+        if(getActivity().findViewById(R.id.fragmentContent)!=null){
+            //show this when in in landscape
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentMain, new NavigationFragment())
+                    .replace(R.id.fragmentContent, fragment2load)
+                    .commit();
+
+        }else {
+            //show this when in in portrait
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentMain, fragment2load)
+                    .commit();
+        }
     }
 }
